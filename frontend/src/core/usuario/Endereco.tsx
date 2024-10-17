@@ -1,7 +1,8 @@
 export default interface Endereco {
-    precoBase: number
-    precoPromocional: number
-    menorPreco: number
-    maiorPreco: number
-    precoMedio: number
+    rua: string;
+    numero: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    cep: string;
 }

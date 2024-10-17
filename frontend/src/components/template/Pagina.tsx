@@ -10,19 +10,20 @@ export interface PaginaProps {
 
 
 export default function Pagina(props: PaginaProps) {
-    return (<div
-        className="flex flex-col min-h-screen bg-[#F7F6F9]"
-    >
-        <div
-            className="flex-1 flex flex-col w-screen"
-            style={{ background: 'url("/background.png")' }}
-        >
+    return (
+        <div className="flex flex-col h-screen w-screen bg-green-700">
+            {/* Header ocupa o topo */}
             <Header />
-            <main className={`flex-1 flex flex-col ${props.className ?? ''}`}>
+            
+            {/* Main content ocupa o centro com flex-grow para preencher o restante da tela */}
+            <main className={`bg-pink-400 p-5 rounded-lg mx-auto my-auto container ${props.className ?? ''}`}>
                 {props.children}
             </main>
+    
+            {/* Footer só aparece se "semRodape" não for passado como true */}
             {!props.semRodape && <Footer />}
-        </div>
-    </div>
+        </div>  
     )
+    
+    
 }
