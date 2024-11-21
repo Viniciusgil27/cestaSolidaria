@@ -33,7 +33,7 @@ export default function MenuButton() {
                 >
                     <ul className="flex flex-col">
                         <li className="px-4 py-2 hover:bg-gray-200 text-black">
-                            <a href="/">Home</a>
+                            <a href="/home">Home</a>
                         </li>
                         <li className="px-4 py-2 hover:bg-gray-200 text-black">
                             <a href="/detalhe-usuario/">Detalhes do Usuário</a>

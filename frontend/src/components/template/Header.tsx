@@ -5,10 +5,14 @@ import TopBar from "./TopBar";
 
 export default function Header() {
 return (
-    <header className="flex items-center h-20 bg-white shadow">
+    <header className="flex items-center h-auto bg-black shadow">
         <div className="container mx-auto flex justify-between items-center px-4">
+            <div>
             <Logo />
+            </div>
+            <div>
             <MenuSuspenso />
+            </div>
         </div>
     </header>
 )

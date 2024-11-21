@@ -5,10 +5,8 @@ import UsuarioNaoEncontrado from "@/components/detalheUsuario/UsuarioNaoEncontra
 
 
     return(
-        <div className="flex flex-col gap-20 container py-10">
-            <div className="flex flex-col gap-10">
-                Detalhe Usuario
-            </div>
-        </div>
+        <main className="flex flex-col justify-center w-full h-full  bg-black border border-gray-300 rounded-lg shadow-lg p-20">
+            <h1 className="text-white"> Detalge Usuario </h1>
+        </main>
     )
 }

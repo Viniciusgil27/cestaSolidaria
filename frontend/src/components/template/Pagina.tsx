@@ -2,28 +2,29 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 export interface PaginaProps {
-    children: any
-    className?: string
-    semCabecalho?: boolean
-    semRodape?: boolean
+  children: React.ReactNode;
+  className?: string;
+  semCabecalho?: boolean;
+  semRodape?: boolean;
 }
 
-
 export default function Pagina(props: PaginaProps) {
-    return (
-        <div className="flex flex-col h-screen w-screen bg-green-700">
-            {/* Header ocupa o topo */}
-            <Header />
-            
-            {/* Main content ocupa o centro com flex-grow para preencher o restante da tela */}
-            <main className={`bg-pink-400 p-5 rounded-lg mx-auto my-auto container ${props.className ?? ''}`}>
-                {props.children}
-            </main>
-    
-            {/* Footer só aparece se "semRodape" não for passado como true */}
-            {!props.semRodape && <Footer />}
-        </div>  
-    )
-    
-    
+  return (
+    <div className="flex flex-col min-h-screen bg-slate-300">
+      {/* Header opcional */}
+      {!props.semCabecalho && <Header />}
+
+      {/* Main content ocupa o centro e é responsivo */}
+      <main
+        className={`flex-grow  p-2 rounded-lg max-w-7xl mx-auto w-full mt-5  ${
+          props.className ?? ""
+        }`}
+      >
+        {props.children}
+      </main>
+
+      {/* Footer opcional */}
+      {!props.semRodape && <Footer />}
+    </div>
+  );
 }
