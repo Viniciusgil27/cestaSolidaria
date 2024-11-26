@@ -16,7 +16,7 @@ export default function MenuButton() {
     };
 
     return (
-        <div className="relative inline-block">
+        <div className="relative inline-block mr-10">
             {/* Evento de mouse no botão */}
             <button
                 onMouseEnter={handleMouseEnterButton}
