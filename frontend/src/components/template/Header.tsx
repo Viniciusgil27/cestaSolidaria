@@ -1,4 +1,5 @@
 import LoginHeader from "../login/LoginHeader";
+import MenuHeader from "../menuSuspenso/MenuHeader";
 import MenuSuspenso from "../menuSuspenso/MenuSuspenso";
 import Logo from "../shared/Logo";
 import LogoPrefeitura from "../shared/LogoPrefeitura";
@@ -11,8 +12,8 @@ export default function Header() {
         <div>
           <Logo />
         </div>
+          <MenuHeader/>
         <div className="flex items-center">
-          <MenuSuspenso />
           <LoginHeader />
         </div>
       </div>

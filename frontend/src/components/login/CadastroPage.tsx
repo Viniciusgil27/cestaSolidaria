@@ -15,10 +15,21 @@ export default function CadastroPage() {
   const [pessoas18a60, setPessoas18a60] = useState(0);
   const [pessoasMais60, setPessoasMais60] = useState(0);
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
+    if(senha == ""){
+      alert("Teste");
+      return;
+    }
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem. Por favor, verifique.");
+      return;
+    }
+
+    const usuario = {
       nome,
       telefone,
       rg,
@@ -31,17 +42,30 @@ export default function CadastroPage() {
       pessoas18a60,
       pessoasMais60,
       senha,
-    });
+    };
+    // Salvando no localStorage
+    localStorage.setItem("usuarioCadastro", JSON.stringify(usuario));
+
+    alert("Cadastro salvo com sucesso!");
+    
+    window.location.href = "/home";
+
+
   };
 
   return (
-    <main className="flex flex-col justify-center w-max h-full bg-black border border-gray-300 rounded-lg shadow-lg p-8">
-      <h1 className="text-2xl font-bold text-center text-slate-100 mb-6">Cadastro</h1>
+    <main className="flex flex-col justify-center items-center h-full bg-white p-8 rounded-lg">
+      <h1 className="text-2xl font-bold text-center text-black mb-6">
+        Cadastro
+      </h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-100 p-6 rounded-lg shadow-md w-full max-w-3xl"
+      >
         {/* Nome Completo */}
-        <div className="mb-4">
-          <label htmlFor="nome" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-1">
+          <label htmlFor="nome" className="block text-sm font-medium text-black">
             Nome Completo
           </label>
           <input
@@ -50,13 +74,16 @@ export default function CadastroPage() {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             placeholder="Digite seu nome completo"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
         {/* Telefone */}
-        <div className="mb-4">
-          <label htmlFor="telefone" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-1">
+          <label
+            htmlFor="telefone"
+            className="block text-sm font-medium text-black"
+          >
             Telefone
           </label>
           <input
@@ -65,13 +92,13 @@ export default function CadastroPage() {
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             placeholder="Digite seu telefone"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
         {/* RG */}
-        <div className="mb-4">
-          <label htmlFor="rg" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-1">
+          <label htmlFor="rg" className="block text-sm font-medium text-black">
             RG
           </label>
           <input
@@ -80,13 +107,13 @@ export default function CadastroPage() {
             value={rg}
             onChange={(e) => setRg(e.target.value)}
             placeholder="Digite seu RG"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
         {/* CPF */}
-        <div className="mb-4">
-          <label htmlFor="cpf" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-1">
+          <label htmlFor="cpf" className="block text-sm font-medium text-black">
             CPF
           </label>
           <input
@@ -95,28 +122,13 @@ export default function CadastroPage() {
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
             placeholder="Digite seu CPF"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-
-        {/* Endereço */}
-        <div className="mb-4">
-          <label htmlFor="endereco" className="block text-sm font-medium text-slate-100 mb-1">
-            Endereço
-          </label>
-          <input
-            id="endereco"
-            type="text"
-            value={endereco}
-            onChange={(e) => setEndereco(e.target.value)}
-            placeholder="Digite seu endereço"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
         {/* CEP */}
-        <div className="mb-4">
-          <label htmlFor="cep" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-1">
+          <label htmlFor="cep" className="block text-sm font-medium text-black">
             CEP
           </label>
           <input
@@ -125,13 +137,34 @@ export default function CadastroPage() {
             value={cep}
             onChange={(e) => setCep(e.target.value)}
             placeholder="Digite seu CEP"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
+          />
+        </div>
+
+        {/* Endereço */}
+        <div className="sm:col-span-1">
+          <label
+            htmlFor="endereco"
+            className="block text-sm font-medium text-black"
+          >
+            Endereço
+          </label>
+          <input
+            id="endereco"
+            type="text"
+            value={endereco}
+            onChange={(e) => setEndereco(e.target.value)}
+            placeholder="Digite seu endereço"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
         {/* Número da Casa */}
-        <div className="mb-4">
-          <label htmlFor="numeroCasa" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-2">
+          <label
+            htmlFor="numeroCasa"
+            className="block text-sm font-medium text-black"
+          >
             Número da Casa
           </label>
           <input
@@ -139,71 +172,83 @@ export default function CadastroPage() {
             type="text"
             value={numeroCasa}
             onChange={(e) => setNumeroCasa(e.target.value)}
-            placeholder="Digite o número da sua casa"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Número da sua casa"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
 
-        {/* Quantas pessoas moram na casa */}
-        <div className="mb-4">
-          <label htmlFor="pessoas" className="block text-sm font-medium text-slate-100 mb-1">
-            Quantas pessoas moram na casa?
-          </label>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="pessoas1a12">1 a 12 anos</label>
-              <input
-                id="pessoas1a12"
-                type="number"
-                value={pessoas1a12}
-                onChange={(e) => setPessoas1a12(parseInt(e.target.value))}
-                min="0"
-                max="12"
-                className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label htmlFor="pessoas12a18">12 a 18 anos</label>
-              <input
-                id="pessoas12a18"
-                type="number"
-                value={pessoas12a18}
-                onChange={(e) => setPessoas12a18(parseInt(e.target.value))}
-                min="0"
-                max="12"
-                className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label htmlFor="pessoas18a60">18 a 60 anos</label>
-              <input
-                id="pessoas18a60"
-                type="number"
-                value={pessoas18a60}
-                onChange={(e) => setPessoas18a60(parseInt(e.target.value))}
-                min="0"
-                max="12"
-                className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label htmlFor="pessoasMais60">Mais de 60 anos</label>
-              <input
-                id="pessoasMais60"
-                type="number"
-                value={pessoasMais60}
-                onChange={(e) => setPessoasMais60(parseInt(e.target.value))}
-                min="0"
-                max="12"
-                className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
+        {/* Pessoas */}
+        <div className="sm:col-span-2 grid grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="pessoas1a12"
+              className="block text-sm font-medium text-black"
+            >
+              1 a 12 anos
+            </label>
+            <input
+              id="pessoas1a12"
+              type="number"
+              value={pessoas1a12}
+              onChange={(e) => setPessoas1a12(parseInt(e.target.value))}
+              className="w-full border border-gray-300 rounded-lg p-3"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="pessoas12a18"
+              className="block text-sm font-medium text-black"
+            >
+              12 a 18 anos
+            </label>
+            <input
+              id="pessoas12a18"
+              type="number"
+              value={pessoas12a18}
+              onChange={(e) => setPessoas12a18(parseInt(e.target.value))}
+              className="w-full border border-gray-300 rounded-lg p-3"
+            />
+          </div>
+        </div>
+        <div className="sm:col-span-2 grid grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="pessoas18a60"
+              className="block text-sm font-medium text-black"
+            >
+              18 a 60 anos
+            </label>
+            <input
+              id="pessoas18a60"
+              type="number"
+              value={pessoas18a60}
+              onChange={(e) => setPessoas18a60(parseInt(e.target.value))}
+              className="w-full border border-gray-300 rounded-lg p-3"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="pessoasMais60"
+              className="block text-sm font-medium text-black"
+            >
+              mais de 60 anos
+            </label>
+            <input
+              id="pessoasMais60"
+              type="number"
+              value={pessoasMais60}
+              onChange={(e) => setPessoasMais60(parseInt(e.target.value))}
+              className="w-full border border-gray-300 rounded-lg p-3"
+            />
           </div>
         </div>
 
         {/* Senha */}
-        <div className="mb-6">
-          <label htmlFor="senha" className="block text-sm font-medium text-slate-100 mb-1">
+        <div className="sm:col-span-2">
+          <label
+            htmlFor="senha"
+            className="block text-sm font-medium text-black"
+          >
             Senha
           </label>
           <input
@@ -212,16 +257,31 @@ export default function CadastroPage() {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             placeholder="Crie uma senha"
-            className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3"
           />
         </div>
-
+        <div className="sm:col-span-2">
+          <label
+            htmlFor="confirmarSenha"
+            className="block text-sm font-medium text-black"
+          >
+            Confirmar Senha
+          </label>
+          <input
+            id="confirmarSenha"
+            type="password"
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+            placeholder="Confirme sua senha"
+            className="w-full border border-gray-300 rounded-lg p-3"
+          />
+        </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="sm:col-span-2 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600"
         >
           Finalizar Cadastro
-          </button>
+        </button>
       </form>
     </main>
   );

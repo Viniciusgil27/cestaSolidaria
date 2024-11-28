@@ -4,10 +4,10 @@
 
 
     return(
-        <div className="flex flex-col gap-20 container py-10">
-            <div className="flex flex-col gap-10">
+        <main className="flex justify-center items-center flex-1  py-10 bg-purple-400">
+            <div className="flex  bg-yellow-300">
                 Informações
             </div>
-        </div>
+        </main>
     )
 }

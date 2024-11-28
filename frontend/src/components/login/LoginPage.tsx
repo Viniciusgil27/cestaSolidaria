@@ -10,11 +10,10 @@ export default function LoginPage() {
     const [senha, setSenha] = useState<string>("");
 
     return (
-        <main className="flex flex-col justify-center w-96 h-full bg-black border border-gray-300 rounded-lg shadow-lg p-20">
-            <div className="flex flex-col justify-center h-36 mb-5">
+        <main className="bg-black flex flex-col justify-center items-center h-max w-96 rounded-lg">
+            <div className="flex flex-col justify-center my-6">
                 <LogoAlternativa />
             </div>
-            <h1 className="text-2xl font-bold text-center text-slate-100 mb-6">Seja bem-vindo</h1>
             {/* Campo de Login */}
             <div className="mb-4">
                 <label htmlFor="login" className="block text-sm font-medium text-slate-100 mb-1">
@@ -26,7 +25,7 @@ export default function LoginPage() {
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}
                     placeholder="Digite seu login"
-                    className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-lg p-3 mb-5 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
             </div>
             {/* Campo de Senha */}
@@ -40,25 +39,26 @@ export default function LoginPage() {
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
                     placeholder="Digite sua senha"
-                    className="w-full border border-gray-300 rounded-lg p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-lg p-3 mb-8 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
             </div>
             {/* Botão de Login */}
             <button
                 type="button"
-                className="w-full bg-blue-600 text-white rounded-lg py-3 hover:bg-blue-700 transition"
+                className="w-2/3 bg-blue-600 text-white rounded-lg py-3 mb-5 hover:bg-blue-700 transition"
             >
                 Entrar
             </button>
             {/* Link para Cadastro */}
-            <div className="mt-4 text-center text-slate-300">
-    <span>Não tem cadastro?</span>
-    <div>
-        <Link href="/cadastro" className="text-blue-500 hover:underline">
-            Cadastre-se aqui
-        </Link>
-    </div>
-</div>
+            <div className="mt-4 text-center text-slate-300 mb-8">
+                <span>Não tem cadastro?</span>
+                <div>
+                    <Link href="/cadastro" className="text-blue-500 hover:underline">
+                        Cadastre-se aqui
+                    </Link>
+                </div>
+            </div>
+
         </main>
     );
 }

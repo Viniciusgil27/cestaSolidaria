@@ -6,7 +6,7 @@ export default function BoasVindas(){
           <div className="lg:w-1/2 mb-10 lg:mb-0">
             <h1 className="text-4xl font-bold mb-4">Bem-vindo à Cesta Solidária</h1>
             <p className="text-lg mb-6">
-            No Cesta Solidária, trabalhamos juntos para levar alimentos a quem mais precisa em nossa comunidade. Recebemos cestas básicas enviadas pela prefeitura e, com o apoio dos próprios moradores, organizamos a logística para que cheguem às famílias cadastradas.
+            Aqui, trabalhamos para levar amor e apoio a quem mais precisa. Este espaço foi criado para facilitar o processo de cadastro e retirada de cestas básicas, ajudando nossa missão de servir à comunidade de forma organizada e eficiente.
             </p>
           </div>
           <div className="lg:w-1/2">

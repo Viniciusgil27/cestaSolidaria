@@ -16,9 +16,8 @@ export default function Pagina(props: PaginaProps) {
 
       {/* Main content ocupa o centro e é responsivo */}
       <main
-        className={`flex-grow  p-2 rounded-lg max-w-7xl mx-auto w-full mt-5  ${
-          props.className ?? ""
-        }`}
+        className={`flex flex-1 items-center justify-center p-2 rounded-lg max-w-7xl mx-auto w-full mt-5  ${props.className ?? ""
+          }`}
       >
         {props.children}
       </main>

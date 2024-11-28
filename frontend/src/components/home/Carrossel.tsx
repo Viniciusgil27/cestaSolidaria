@@ -23,7 +23,7 @@ export default function Carrossel() {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] overflow-hidden">
+    <div className="relative w-full h-[400px] overflow-hidden rounded-xl">
       {/* Imagens */}
       {banners.map((banner, index) => (
         <div

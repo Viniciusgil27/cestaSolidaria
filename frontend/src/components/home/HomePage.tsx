@@ -7,7 +7,7 @@ import Instrucoes from './Instrucoes';
 
 export default function HomePage() {
     return (
-        <div className="min-h-screen bg-gray-100 flex-1">
+        <div className="min-h-screen bg-gray-100 flex-1 rounded-lg overflow-hidden">
           {/* Hero Section */}
             <BoasVindas/>
           {/* About Section */}
